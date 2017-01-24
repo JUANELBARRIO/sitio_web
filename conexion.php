@@ -1,12 +1,13 @@
 <?php
 class conexion extends mysqli {
-    //private $database_host='';
-    //private $database_name='';
-    //private $database_user='';
-    //private $database_password='';
-    //private $datavbase_port='';
+     'database_host'='';
+     'database_name'='';
+     'database_user'='';
+     'database_password'='';
+     'datavbase_port'='';
 
-    private $datos= ['database_host'=>'';
+    private $datos= [
+                     'database_host'=>'';
                      'database_name'=>'';
                      'database_user'=>'';
                      'database_password'=>'';
@@ -16,12 +17,12 @@ class conexion extends mysqli {
 public function __construct(){
     $this->datos=['database_host'=>'127.0.0.1';
                      'database_name'=>'udo';
-                     'database_user'=>'KALEB';
+                     'database_user'=>'juan';
                      'database_password'=>'123';
                      'database_port'=>'3306';
                      ];
-
-                   $cnn->conector();
+parent::__construct($this->database_host,$this->database_user,$this->database_passwd,
+$this->database_name,$this->database_part);
 }
 
 public function __construct($host,$name,$user,$password,$port){
