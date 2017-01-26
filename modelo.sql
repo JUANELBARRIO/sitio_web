@@ -10,8 +10,7 @@ create table usuarios(
       email varchar(200) not null default 'sin@correo.com' comment 'correo electronico',
       primary key (id),
       unique idu_username (username)
-
-)
+)engine=MyISAM;
 
  insert into usuario(username,password,nombre,apellidos,email)
  values('juansinmiedo,123,5)

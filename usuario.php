@@ -1,53 +1,46 @@
 <?php
-class usuarios{
-    private $datos =[
-        'id' =>'',
-        'username'=>'',
-        'password'=>'',
-        'nombre'=>'',
-        'apellidos'=>'',
-        'email'=>''
+require 'conexion.php';
+class Usuario {
+    private $datos = [
+        'id'        => '',
+        'username'  => '',
+        'nombre'    => '',
+        'apellidos' => '',
+        'email'     => ''
     ];
-
-    public function __construct(){
-        }
-
-    public static function login ($user,$passwd){
-        $cnn = new conexion();
-        $sql = sprintf("select * from where username='%s' and password '%s'",$user,md5($passwd)
-        );
+    public static function login($user, $passwd) {
+        $datos = ['data' => [ 'login' => '' ]];
+        $cnn = new Conexion();
+        $sql = sprintf("select * from usuarios where username='%s' and password='%s'",$user,md5($passwd));
         $rst = $cnn->query($sql);
-        if ($rst){
-            if($rst->num_rows == 1){
-              $r = $rst->fetch_assoc();  
-              $usuario = new usuario();
-              $usuario->id = $r['id'];
-              $usuario->username = $r['username'];
-              $usuario->nombre = $r['nombre'];
-              $usuario->apellidos = $r['apellidos'];
-              $usuario->email = $r['email'];
-
-              return $usuario;
+        if ($rst) {
+            if ($rst->num_rows == 1) {
+                $r = $rst->fetch_assoc();
+                $usuario = new Usuario();
+                $usuario->id = $r['id'];
+                $usuario->username = $r['username'];
+                $usuario->nombre = $r['nombre'];
+                $usuario->apellidos = $r['apellidos'];
+                $usuario->email = $r['email'];
+                $datos['data']['login'] = true;
+                $datos['data']['usuario'] = $usuario->datos;
             } else {
-                return null;
+                $datos['data']['login'] = false;
             }
-        }else{
-            return false;
-        }  
-
+        } else {
+            $datos['data']['login'] = 'fail';
+        }
+        
+        return json_encode($datos);
     }
-
-    public function __get($campo){
-        if(array_key_exists($campo, $datos))
-        return $this->datos[$campo];
+    public function __get($campo) {
+        if (array_key_exists($campo, $this->datos))
+            return $this->datos[$campo];
     }
-     
-     public function __set($campo,$valor){
-        if(array_key_exists($campo, $datos))
-        return $this->datos[$campo] = $valor;
-   }
-
+    public function __set($campo, $valor) {
+        if (array_key_exists($campo, $this->datos))
+            $this->datos[$campo] = $valor;
+    }
 }
-
-$u = Usuario ::login('juansinmiedo','123')
+$u = Usuario::login('bidkar','123');
 var_dump($u);
