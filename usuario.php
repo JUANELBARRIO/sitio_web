@@ -43,5 +43,5 @@ class Usuario {
             $this->datos[$campo] = $valor;
     }
 }
-// $u = Usuario::login('bidkar','123');
+// $u = Usuario::login('juan','123');
 // var_dump($u);
