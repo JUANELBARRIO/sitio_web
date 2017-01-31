@@ -1,14 +1,14 @@
-function login() {
-    var usuario = document.getElementById('txtusuario').Value;
-    var passwd = document.getElementById('txtpasswd').Value;
-    alert('usuario:'+ usuario +',contraseña:'+ passwd);
+function login(usuario, passwd) {
+    $.post("login.php", { txtusuario:usuario, txtpassword:passwd }, function(data) {
+        return data;
+    });
 }
 
-$ (document).ready(function(){
-    $('#login-button').onClick(function(event){
-        var usuario = $('#txtusuario').Value;
-        var passwd = $('txtpasswd').Value;
+$(document).ready(function() {
+    $('#login-button').click(function(event) {
         event.preventDefault();
-        login(usuario,passwd);
+        var usuario = $('#txtusuario').val();
+        var passwd = $('#txtpassword').val();
+        login(usuario, passwd);
     });
 });
