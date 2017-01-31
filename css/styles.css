@@ -1,54 +1,93 @@
-/*Reglas CSS*/
-/* 1er Regla: Tipo etiqueta */
+/* Reglas CSS */
+/*
+regla {
+    propiedad: valor;
+}
+*/
 
-/*Regla {
-        propiedad: valor;
-    }*/
+/* Tipo etiqueta */
 body,h1,h2,h3,h4,h5,h6 {
     margin: 0;
     padding: 0;
     border: 0;
 }
 
-/*Tipo ID*/
+body {
+    background-color: #ebecdf;
+}
+
+/* Tipo ID */
 #encabezado {
-    /*bgc*/
     background-color: #93485E;
     padding: 10px;
     color: #ffffff;
-
+    /*color: rgb(255, 255, 0);
+    color: rgba(255, 255, 0,.5);
+    color: white;*/
 }
 
-#login-form{
-    width: 400px;
-    margin: 0 auto;
+#login-form {
+    width: 370px;
+    margin: 20px auto;
     padding: 15px;
+    /*
+    margin: 10px; aplica a los 4 lados
+    margin: 10px 15px; aplica arriba y abajo 10px, izquierda y derecha 15px
+    margin: 5px 10px 15px; aplica 5px arriba, 10px izquierda y derecha, 15px abajo
+    margin: 1px 2px 3px 4px; aplica 1px arriba, 2px derecha, 3px abajo, 4px izquierda
+    */
+    background-color: white;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    box-shadow: 0 0 10px lightgray;
 }
 
 #login-form .input {
-    width: 100%;
+    width: 98%;
     font-size: 1em;
 }
 
-#login-form .control{
+#login-form .control {
     margin-bottom: 20px;
 }
 
-#login-form .control label{
-    font-size: 1em;
+#login-form .control label {
+    font-size: 1.2em;
 }
-/* Tipo Clase */
+
+#login-form button {
+    /* shorthand */
+    border: 1px solid lightgray;
+    /* border-width: 1px;
+       border-style: solid;
+       border-color: lightgray;*/
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 1em;
+    width: 100%;
+    margin: 10px 0;
+}
+
+/* Tipo clase */
 .negrita {
     font-weight: bold;
-
 }
 
+.block {
+    display: block;
+}
 
+.inline-block {
+    display: inline-block;
+}
 
+.control input {
+    padding: 3px;
+    border: 1px solid lightgray;
+}
 
-
-
-
-
+.text-center {
+    text-align: center;
+}
 
 
