@@ -12,7 +12,7 @@ class Usuario {
         // $datos = array('data' => array( 'login' => '' ));
         $cnn = new Conexion();
         $sql = sprintf("select * from usuarios where username='%s' and password='%s'",$user,md5($passwd));
-        $rst = $cnn->query($sql); 
+        $rst = $cnn->query($sql); // mysqli_result || false
         $cnn->close();
         if ($rst) {
             if ($rst->num_rows == 1) {
@@ -25,6 +25,12 @@ class Usuario {
                 $usuario->email = $r['email'];
                 $datos['data']['login'] = true;
                 $datos['data']['usuario'] = $usuario->datos;
+                
+                if (!$_SESSION['user']) {
+                    $token = md5($usuario->username.date());
+                    $datos['data']['token'] = $token;
+                    $_SESSION['user'] = $datos;
+                }
             } else {
                 $datos['data']['login'] = false;
             }
@@ -43,5 +49,5 @@ class Usuario {
             $this->datos[$campo] = $valor;
     }
 }
-// $u = Usuario::login('juan','123');
+// $u = Usuario::login('bidkar','123');
 // var_dump($u);
